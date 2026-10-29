@@ -5,3 +5,8 @@ coverage/
 .env.*
 !.env.example
 *.log
+# Private credentials and release archives
+*.tgz
+
+# NPM package archives
+*.tgz

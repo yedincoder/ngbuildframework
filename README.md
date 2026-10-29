@@ -1,6 +1,16 @@
 # NgBuild Framework
 
+[![npm Version](https://img.shields.io/npm/v/@yedincoder/ngbuildframework?logo=npm)](https://www.npmjs.com/package/@yedincoder/ngbuildframework)
+[![npm Downloads](https://img.shields.io/npm/dm/@yedincoder/ngbuildframework?logo=npm)](https://www.npmjs.com/package/@yedincoder/ngbuildframework)
+[![License](https://img.shields.io/npm/l/@yedincoder/ngbuildframework)](LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/yedincoder/ngbuildframework?logo=github)](https://github.com/yedincoder/ngbuildframework/releases)
+[![GitHub Issues](https://img.shields.io/github/issues/yedincoder/ngbuildframework?logo=github)](https://github.com/yedincoder/ngbuildframework/issues)
+[![Node.js](https://img.shields.io/badge/Node.js-Supported-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Declarations-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
 **One Framework. Web, API & Mobile.**
+
+A modular JavaScript and TypeScript framework for building Web applications, REST APIs, and Mobile applications.
 
 NgBuild Framework adalah framework JavaScript dan TypeScript modular yang dirancang untuk membangun aplikasi Web, REST API, dan Mobile dalam satu ekosistem.
 
