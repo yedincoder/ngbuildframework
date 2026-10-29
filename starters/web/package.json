@@ -1,0 +1,17 @@
+
+{
+  "name": "ngbuild-web-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ngbuild dev .",
+    "build": "ngbuild build ."
+  },
+  "dependencies": {
+    "@yedincoder/ngbuildframework": "^1.0.0"
+  },
+  "devDependencies": {
+    "@yedincoder/ngbuild": "^1.0.2"
+  }
+}

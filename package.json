@@ -1,13 +1,63 @@
 {
-  "name": "ngbuild-web",
+  "name": "@yedincoder/ngbuildframework",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
+  "description": "NgBuild Framework - One Framework. Web, API & Mobile.",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core-entry.d.ts",
+      "import": "./dist/core-entry.js"
+    },
+    "./web": {
+      "types": "./dist/web/index.d.ts",
+      "import": "./dist/web/index.js"
+    },
+    "./api": {
+      "types": "./dist/api-entry.d.ts",
+      "import": "./dist/api-entry.js"
+    },
+    "./mobile": {
+      "types": "./dist/mobile-entry.d.ts",
+      "import": "./dist/mobile-entry.js"
+    }
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "dev:framework": "ngbuild dev .",
+    "test:cli": "node src/cli-test.mjs",
+    "test:package": "node src/package-test.mjs",
+    "test": "npm run test:package"
+  },
+  "keywords": [
+    "ngbuild",
+    "framework",
+    "javascript",
+    "typescript",
+    "web",
+    "api",
+    "mobile",
+    "modular"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yedincoder/ngbuildframework.git"
+  },
+  "homepage": "https://github.com/yedincoder/ngbuildframework#readme",
+  "bugs": {
+    "url": "https://github.com/yedincoder/ngbuildframework/issues"
+  },
+  "author": "YedinCoder",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@types/node": "^26.6.6",
     "@yedincoder/ngbuild": "^1.0.2",
