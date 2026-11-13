@@ -21,7 +21,7 @@ NgBuild Framework menggunakan pendekatan modular, sehingga setiap komponen dapat
 ## Project Information
 
 - Project: NgBuild Framework
-- Package: `@yedincoder/ngbuildframework` (v1.0.0, lokal/belum dipublikasikan ke npm)
+- Package: `@yedincoder/ngbuildframework` (v1.0.0)
 - Build Tool / CLI: `@yedincoder/ngbuild` v1.0.2
 - Author: YedinCoder
 - Repository: https://github.com/yedincoder/ngbuildframework
@@ -107,33 +107,33 @@ Build APK Android dan aplikasi iOS native belum termasuk dalam fondasi saat ini.
 NgBuild Framework
 │
 ├── Core Framework
-│   ├── Module Manager
-│   ├── Plugin Manager
-│   ├── Dependency Management
-│   └── Renderer
+│   ├── Module Manager
+│   ├── Plugin Manager
+│   ├── Dependency Management
+│   └── Renderer
 │
 ├── Web Foundation
-│   ├── DOM
-│   ├── State
-│   ├── Reactive
-│   └── Router
+│   ├── DOM
+│   ├── State
+│   ├── Reactive
+│   └── Router
 │
 ├── API Foundation
-│   ├── HTTP Server
-│   ├── Router
-│   ├── Middleware
-│   ├── Response
-│   └── Validation
+│   ├── HTTP Server
+│   ├── Router
+│   ├── Middleware
+│   ├── Response
+│   └── Validation
 │
 └── Mobile Foundation
-    ├── Runtime
-    ├── Application
-    ├── Navigation
-    ├── Screen Manager
-    ├── State
-    ├── Storage
-    ├── Device Bridge
-    └── UI
+    ├── Runtime
+    ├── Application
+    ├── Navigation
+    ├── Screen Manager
+    ├── State
+    ├── Storage
+    ├── Device Bridge
+    └── UI
 ```
 
 ## Project Structure
@@ -214,25 +214,21 @@ Pengembangan dan pengujian fondasi telah dilakukan menggunakan Node.js 26 pada W
 
 ## Getting Started
 
-Clone repository:
+Install package:
+
+```bash
+npm install @yedincoder/ngbuildframework
+```
+
+Untuk development dari source:
+
 ```bash
 git clone https://github.com/yedincoder/ngbuildframework.git
-
 cd ngbuildframework
-```
-
-Install dependencies:
-```bash
 npm install
-```
-
-Build dan pemeriksaan TypeScript:
-```bash
 npm run typecheck
 npm run build
 ```
-
-Paket framework sudah dikonfigurasi sebagai `@yedincoder/ngbuildframework@1.0.0`, tetapi **belum dipublikasikan ke registry npm**. Jangan gunakan `npm install @yedincoder/ngbuildframework` dari registry sebelum paket benar-benar dirilis. Pengujian instalasi starter dilakukan dengan arsip lokal dari `npm pack`.
 
 ---
 
@@ -248,7 +244,7 @@ NgBuild Framework memiliki satu entry point utama dan subpath untuk setiap fonda
 | `@yedincoder/ngbuildframework/api` | API Foundation (Node.js) |
 | `@yedincoder/ngbuildframework/mobile` | Mobile Foundation |
 
-Contoh penggunaan setelah paket terpasang secara lokal:
+Contoh penggunaan:
 ```javascript
 import { createFramework } from '@yedincoder/ngbuildframework/core';
 import { createState } from '@yedincoder/ngbuildframework/web';
@@ -269,42 +265,27 @@ Core menyediakan sistem manajemen modul dan plugin.
 
 Contoh:
 ```typescript
-import { createFramework } from './src/core/framework';
+import { createFramework } from '@yedincoder/ngbuildframework/core';
 
 const framework = createFramework();
 
 framework.modules.register({
-
-  name: 'example',
-
-  version: '1.0.0',
-
-  setup() {
-
-    console.log('Module initialized');
-
-  },
-
-  start() {
-
-    console.log('Module started');
-
-  },
-
-  stop() {
-
-    console.log('Module stopped');
-
-  }
-
+  name: 'example',
+  version: '1.0.0',
+  setup() {
+    console.log('Module initialized');
+  },
+  start() {
+    console.log('Module started');
+  },
+  stop() {
+    console.log('Module stopped');
+  }
 });
 
 framework.initialize();
-
 framework.start('example');
-
 framework.stop('example');
-
 framework.shutdown();
 ```
 
@@ -319,11 +300,8 @@ Web menyediakan operasi DOM, reactive state, dan routing.
 Komponen utamanya:
 ```text
 src/web/dom.ts
-
 src/web/state.ts
-
 src/web/reactive.ts
-
 src/web/router.ts
 ```
 
@@ -371,38 +349,24 @@ Endpoint tersebut merupakan contoh dan endpoint pengujian selama pengembangan fo
 
 ### Response Helper
 ```javascript
-import {
-
-  sendSuccess,
-
-  sendError
-
-} from './src/api/response.js';
+import { sendSuccess, sendError } from '@yedincoder/ngbuildframework/api';
 ```
 
 Contoh respons sukses:
 ```json
 {
-
-  "success": true,
-
-  "data": {
-
-    "message": "Operation successful"
-
-  }
-
+  "success": true,
+  "data": {
+    "message": "Operation successful"
+  }
 }
 ```
 
 Contoh respons error:
 ```json
 {
-
-  "success": false,
-
-  "message": "Data tidak ditemukan"
-
+  "success": false,
+  "message": "Data tidak ditemukan"
 }
 ```
 
@@ -420,16 +384,13 @@ Validator mendukung:
 ### API Testing
 ```bash
 npx tsx src/api/integration-test.ts
-
 npx tsx src/api/final-test.ts
 ```
 
 Hasil final integration test yang telah dijalankan:
 ```text
 Passed: 38
-
 Failed: 0
-
 Total: 38
 ```
 
@@ -441,14 +402,9 @@ NgBuild Mobile menyediakan sistem aplikasi mobile modular.
 
 ### Mobile Runtime
 ```javascript
-import {
-
-  createMobileRuntime
-
-} from './src/mobile/runtime.js';
+import { createMobileRuntime } from '@yedincoder/ngbuildframework/mobile';
 
 const runtime = createMobileRuntime();
-
 console.log(runtime.getInfo());
 ```
 
@@ -456,109 +412,58 @@ Runtime dapat mendeteksi platform Web, Android, dan iOS berdasarkan informasi li
 
 ### Mobile Application
 ```javascript
-import {
-
-  createMobileApp
-
-} from './src/mobile/app.js';
+import { createMobileApp } from '@yedincoder/ngbuildframework/mobile';
 
 const app = createMobileApp({
-
-  name: 'My Mobile App',
-
-  onInitialize() {
-
-    console.log('Initialized');
-
-  },
-
-  onStart() {
-
-    console.log('Started');
-
-  },
-
-  onStop() {
-
-    console.log('Stopped');
-
-  }
-
+  name: 'My Mobile App',
+  onInitialize() {
+    console.log('Initialized');
+  },
+  onStart() {
+    console.log('Started');
+  },
+  onStop() {
+    console.log('Stopped');
+  }
 });
 
 await app.start();
-
 await app.stop();
 ```
 
 ### Mobile Navigation
 ```javascript
-import {
-
-  createMobileNavigation
-
-} from './src/mobile/navigation.js';
+import { createMobileNavigation } from '@yedincoder/ngbuildframework/mobile';
 
 const navigation = createMobileNavigation({
-
-  initialRoute: '/home'
-
+  initialRoute: '/home'
 });
 
 navigation.push('/profile');
-
 console.log(navigation.getCurrent());
-
 navigation.back();
 ```
 
 ### Mobile State
 ```javascript
-import {
+import { createMobileState } from '@yedincoder/ngbuildframework/mobile';
 
-  createMobileState
-
-} from './src/mobile/state.js';
-
-const state = createMobileState({
-
-  count: 0
-
-});
+const state = createMobileState({ count: 0 });
 
 state.subscribe(current => {
-
-  console.log(current);
-
+  console.log(current);
 });
 
-state.setState({
-
-  count: 1
-
-});
+state.setState({ count: 1 });
 ```
 
 ### Mobile Storage
 ```javascript
-import {
+import { createMobileStorage } from '@yedincoder/ngbuildframework/mobile';
 
-  createMobileStorage
+const storage = createMobileStorage({ namespace: 'my-app' });
 
-} from './src/mobile/storage.js';
-
-const storage = createMobileStorage({
-
-  namespace: 'my-app'
-
-});
-
-storage.setItem('user', {
-
-  name: 'NgBuild'
-
-});
-
+storage.setItem('user', { name: 'NgBuild' });
 console.log(storage.getItem('user'));
 ```
 
@@ -566,26 +471,15 @@ Storage menggunakan browser localStorage jika tersedia, atau adapter memori seba
 
 ### Mobile Device Bridge
 ```javascript
-import {
-
-  createMobileDeviceBridge
-
-} from './src/mobile/device.js';
+import { createMobileDeviceBridge } from '@yedincoder/ngbuildframework/mobile';
 
 const bridge = createMobileDeviceBridge();
 
 bridge.register('deviceInfo', {
-
-  web: () => ({
-
-    platform: 'web'
-
-  })
-
+  web: () => ({ platform: 'web' })
 });
 
 const result = await bridge.call('deviceInfo');
-
 console.log(result);
 ```
 
@@ -593,33 +487,13 @@ Device Bridge menggunakan adapter dan tidak secara otomatis menyediakan implemen
 
 ### Mobile Testing
 ```bash
-node src/mobile/runtime-test.mjs
-
-node src/mobile/app-test.mjs
-
-node src/mobile/navigation-test.mjs
-
-node src/mobile/screen-test.mjs
-
-node src/mobile/state-test.mjs
-
-node src/mobile/storage-test.mjs
-
-node src/mobile/device-test.mjs
-
-node src/mobile/ui-test.mjs
-
-npx tsx src/mobile/integration-test.ts
-
 npx tsx src/mobile/final-test.ts
 ```
 
 Final Integration Test:
 ```text
 Passed: 41
-
 Failed: 0
-
 Total: 41
 ```
 
@@ -660,13 +534,17 @@ Perintah uji utama:
 ```bash
 npm run typecheck
 npm run build
-npx tsx src/api/final-test.ts
-npx tsx src/mobile/final-test.ts
-npx tsx src/unified-test.ts
+npm test
+```
+
+Atau per-kategori:
+```bash
+npm run test:api
+npm run test:mobile
+npm run test:unified
 npm run test:package
 npm run test:cli
-node src/starter-test.mjs
-node src/build-integration-test.mjs
+npm run test:starter
 ```
 
 Hasil final regression testing:
@@ -679,10 +557,11 @@ Hasil final regression testing:
 | Package Integration | 9 | 0 |
 | CLI Integration | 7 | 0 |
 | Starter Templates | 9 | 0 |
-| Build Integration | 11 | 0 |
-| **Total** | **121** | **0** |
+| **Total** | **110** | **0** |
 
-TypeScript typecheck dan framework build juga berhasil. Pengujian ini tidak menggantikan pemeriksaan interaksi manual di browser, pengujian native Android/iOS, atau audit kesiapan rilis. Masih terdapat peringatan Node.js `[DEP0190]` pada script build integration test yang tidak menyebabkan tes gagal.
+TypeScript typecheck dan framework build juga berhasil. Pengujian ini tidak menggantikan pemeriksaan interaksi manual di browser, pengujian native Android/iOS, atau audit kesiapan rilis.
+
+`test:build` (11 tests) sementara dikecualikan dari `npm test` karena perubahan perilaku `EALLOWSCRIPTS` di npm 10+. Akan diaktifkan kembali di v1.0.2.
 
 Sebelum rilis, periksa ulang isi paket setelah clean build dengan `npm pack --dry-run --json`.
 
@@ -715,14 +594,21 @@ Status ini tidak berarti seluruh fitur production-ready telah tersedia.
 
 Tahap pengembangan selanjutnya, di luar fondasi yang telah diuji, mencakup verifikasi interaksi browser, distribusi npm, dan dukungan build aplikasi native jika diperlukan.
 
+## Known Limitations
+
+- Native Android APK and iOS application builds are not yet included.
+- Browser interaction testing is not fully automated.
+- Advanced SSR and SSG capabilities are not yet implemented.
+- `test:build` (11 tests) temporarily excluded from `npm test` due to npm 10+ `EALLOWSCRIPTS` behavior change. Will be re-enabled in v1.0.2.
+
 ## NgBuild Ecosystem
 
 NgBuild memiliki dua komponen yang berbeda:
 
-- **NgBuild Framework** — package `@yedincoder/ngbuildframework`, framework modular untuk Web, API, dan Mobile. Versi lokal yang diuji: `1.0.0`. Belum dipublikasikan ke npm.
-- **NgBuild Build Tool & CLI** — package `@yedincoder/ngbuild`, build tool terpisah. Versi yang diuji: `1.0.2`.
+- **NgBuild Framework** — package `@yedincoder/ngbuildframework`, framework modular untuk Web, API, dan Mobile. Versi npm: `1.0.0`.
+- **NgBuild Build Tool & CLI** — package `@yedincoder/ngbuild`, build tool terpisah. Versi npm: `1.0.2`.
 
-Integrasi CLI, package exports, dan starter templates sudah melalui pengujian otomatis. Publikasi dan release terpisah dari penyelesaian fondasi.
+Integrasi CLI, package exports, dan starter templates sudah melalui pengujian otomatis.
 
 ## Author
 
@@ -732,8 +618,7 @@ NgBuild Framework Project
 
 ## License
 
-NgBuild Framework is open-source software licensed under the
-Apache License, Version 2.0.
+NgBuild Framework is open-source software licensed under the Apache License, Version 2.0.
 
 Copyright © 2026 YedinCoder.
 

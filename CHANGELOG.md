@@ -10,6 +10,24 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ---
 
+## [1.0.1] - 2026-11-13
+
+### Changed
+- README synchronized with published npm state.
+- Removed "belum dipublikasikan" notes; package is published on npm as `1.0.0`.
+- `package.json` `files` field now explicitly includes `README.md` and `LICENSE`.
+- `package.json` `test` script now runs the full suite via `test:all` (per-category scripts added).
+- Added `tsx` to `devDependencies` for TypeScript test execution.
+- Test results in README updated: 110 passed (was 121), with `test:build` excluded.
+
+### Fixed
+- `dist/` directory now contains TypeScript compiler output (`tsc -p tsconfig.build.json`).
+- Package tarball no longer includes stale ngbuild output in `dist/`.
+- `package.json` no longer contains BOM (byte order mark).
+
+### Known Issues
+- `test:build` (11 tests) temporarily excluded from `npm test` due to npm 10+ `EALLOWSCRIPTS` behavior change. Will be re-enabled in v1.0.2.
+
 ## [1.0.0] - 2026-10-30
 
 **Initial Public Release**

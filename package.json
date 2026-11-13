@@ -28,15 +28,23 @@
     }
   },
   "files": [
-    "dist/"
+    "dist/",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "dev:framework": "ngbuild dev .",
-    "test:cli": "node src/cli-test.mjs",
+    "test": "npm run test:all",
+    "test:all": "npm run test:api && npm run test:mobile && npm run test:unified && npm run test:package && npm run test:cli && npm run test:starter && npm run test:build",
+    "test:api": "tsx src/api/final-test.ts",
+    "test:mobile": "tsx src/mobile/final-test.ts",
+    "test:unified": "tsx src/unified-test.ts",
     "test:package": "node src/package-test.mjs",
-    "test": "npm run test:package"
+    "test:cli": "node src/cli-test.mjs",
+    "test:starter": "node src/starter-test.mjs",
+    "test:build": "node src/build-integration-test.mjs"
   },
   "keywords": [
     "ngbuild",
@@ -61,6 +69,7 @@
   "devDependencies": {
     "@types/node": "^26.6.6",
     "@yedincoder/ngbuild": "^1.0.2",
+    "tsx": "^4.19.0",
     "typescript": "^7.0.2"
   }
 }
