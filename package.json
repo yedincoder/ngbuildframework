@@ -1,6 +1,6 @@
 {
   "name": "@yedincoder/ngbuildframework",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NgBuild Framework - One Framework. Web, API & Mobile.",
   "type": "module",
   "main": "./dist/index.js",
