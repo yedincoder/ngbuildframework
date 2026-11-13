@@ -27,11 +27,7 @@
       "import": "./dist/mobile-entry.js"
     }
   },
-  "files": [
-    "dist/",
-    "README.md",
-    "LICENSE"
-  ],
+  "files": ["dist/", "README.md", "LICENSE", "CHANGELOG.md"],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
